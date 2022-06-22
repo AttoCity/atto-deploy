@@ -1,0 +1,15 @@
+{
+  "name": "atto-deploy",
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "@ainou/code-style": "^0.0.17",
+    "@types/eslint": "^8",
+    "@types/node": "16",
+    "@types/prettier": "^2",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}
