@@ -12,11 +12,7 @@
     "removeComments": false,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "lib": [
-      "ESNext"
-    ]
+    "lib": ["ESNext"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

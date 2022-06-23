@@ -2,10 +2,12 @@
   "deno.enable": true,
   "deno.lint": true,
   "deno.unstable": true,
+  "deno.importMap": "./import_map.json",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "cSpell.words": ["transtream"]
 }
