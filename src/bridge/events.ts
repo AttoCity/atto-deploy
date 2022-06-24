@@ -1,3 +1,5 @@
+import type { ConnInfo } from 'http/server.ts'
+
 export type SerializableRequest = Pick<
   Request,
   | 'cache'
@@ -23,10 +25,11 @@ export type SerializableResponse = Pick<Response, 'ok' | 'redirected' | 'status'
   // trailer?: [string, string][]
 }
 
-export type IPCEvent =
+export type BridgeEvent =
   | {
       event: 'request'
       request: SerializableRequest
+      connInfo: ConnInfo
     }
   | {
       event: 'response'

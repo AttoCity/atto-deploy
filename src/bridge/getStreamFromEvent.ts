@@ -1,4 +1,4 @@
-import { TranstreamClient } from '@/transtream/index.ts'
+import { TranstreamClient } from '../transtream/index.ts'
 
 export function getStreamFromEvent(e: MessageEvent, index = 0) {
   const port = e.ports[index]
