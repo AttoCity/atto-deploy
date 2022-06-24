@@ -4,7 +4,8 @@ import { getStreamFromEvent } from './getStreamFromEvent.ts'
 import { serializeResponse } from './serialize.ts'
 
 export function handleRequest(handler: Handler) {
-  globalThis.addEventListener('message', async (e) => {
+  globalThis.addEventListener('message', async (ev) => {
+    const e = ev as MessageEvent
     const data = e.data as BridgeEvent
     if (data.event === 'request') {
       const responsePort = e.ports[0]
