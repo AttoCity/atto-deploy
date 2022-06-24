@@ -1,4 +1,4 @@
-import { connectWire, reverseProtocol, WindowMessageRpc } from '@/rpc/index.ts'
+import { connectWire, reverseProtocol, WindowMessageRpc } from '../rpc/index.ts'
 import { transtreamProtocol } from './transtreamProtocol.ts'
 
 export class TranstreamServer extends connectWire(reverseProtocol(transtreamProtocol), WindowMessageRpc) {

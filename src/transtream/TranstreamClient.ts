@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { connectWire, WindowMessageRpc } from '@/rpc/index.ts'
+import { connectWire, WindowMessageRpc } from '../rpc/index.ts'
 import { transtreamProtocol } from './transtreamProtocol.ts'
 
 export class TranstreamClient extends connectWire(transtreamProtocol, WindowMessageRpc) {

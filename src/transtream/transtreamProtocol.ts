@@ -1,4 +1,4 @@
-import { rpcMethod, rpcProtocol } from '@/rpc/index.ts'
+import { rpcMethod, rpcProtocol } from '../rpc/index.ts'
 
 export const transtreamProtocol = rpcProtocol({
   server: {
