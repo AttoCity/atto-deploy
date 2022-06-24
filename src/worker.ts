@@ -1,10 +1,8 @@
 /// <reference lib="deno.worker"/>
-import { handleRequest } from './bridge/handleRequest.ts'
+import { handleRequest } from '$handleRequest$'
 
-async function handler(req: Request): Promise<Response> {
+handleRequest(async function handler(req): Promise<Response> {
   const text = await req.text()
-  const resp = text.split('').reverse().join('')
-  return new Response(resp)
-}
-
-handleRequest(handler)
+  const reversed = text.split('').reverse().join('')
+  return new Response(reversed)
+})
