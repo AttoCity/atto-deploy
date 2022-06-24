@@ -1,19 +1,19 @@
 export interface DeferredPromise<ValueType> {
   /**
-	The deferred promise.
-	*/
+  The deferred promise.
+  */
   promise: Promise<ValueType>
 
   /**
-	Resolves the promise with a value or the result of another promise.
-	@param value - The value to resolve the promise with.
-	*/
+  Resolves the promise with a value or the result of another promise.
+  @param value - The value to resolve the promise with.
+  */
   resolve(value?: ValueType | PromiseLike<ValueType>): void
 
   /**
-	Reject the promise with a provided reason or error.
-	@param reason - The reason or error to reject the promise with.
-	*/
+  Reject the promise with a provided reason or error.
+  @param reason - The reason or error to reject the promise with.
+  */
   reject(reason?: unknown): void
 }
 

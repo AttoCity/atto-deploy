@@ -3,6 +3,7 @@
     "@/": "./src/",
     "std/": "https://deno.land/std@0.59.0/",
     "http/": "https://deno.land/std@0.144.0/http/",
-    "debug": "https://deno.land/x/debug@0.2.0/mod.ts"
+    "debug": "https://deno.land/x/debug@0.2.0/mod.ts",
+    "p-defer": "./src/utils/pDefer.ts"
   }
 }

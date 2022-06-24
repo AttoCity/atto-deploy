@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/require-await */
-import createDefer, { DeferredPromise } from './pDefer.ts'
+import createDefer, { DeferredPromise } from 'p-defer'
 import { debug as Debug } from 'debug'
 
 const debug = Debug('epicframe:rpc:wire')

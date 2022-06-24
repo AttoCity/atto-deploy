@@ -2,8 +2,9 @@ import { serve } from 'http/server.ts'
 import { pick } from './utils/pick.ts'
 import { domIterableToArray } from './utils/domIterableToArray.ts'
 import { SerializableRequest, IPCEvent } from './ipc.ts'
-import { TranstreamClient, TranstreamServer } from './transtream/index.ts'
-import { delay } from 'std/async/delay.ts'
+import { createStreamPort } from './utils/createStreamPort.ts'
+import { getStreamFromEvent } from './utils/getStreamFromEvent.ts'
+import createDefer, { DeferredPromise } from 'p-defer'
 
 const worker = new Worker(new URL('./worker.ts', import.meta.url).href, {
   type: 'module',
@@ -14,12 +15,19 @@ function postMessageToWorker(message: IPCEvent, transfers: Transferable[] = []) 
   worker.postMessage(message, transfers)
 }
 
-let requestId = 0
-const requestMap = new Map<number, Request>()
-
 async function handler(req: Request): Promise<Response> {
-  requestId++
-  requestMap.set(requestId, req)
+  const responseDefer = createDefer<Response>()
+
+  const responseChannel = new MessageChannel()
+  responseChannel.port1.onmessage = (e) => {
+    const data = e.data as IPCEvent
+    if (data.event === 'response') {
+      const stream = getStreamFromEvent(e)
+      const response = new Response(stream, data.response)
+      responseDefer.resolve(response)
+    }
+  }
+
   const serializableRequest: SerializableRequest = {
     ...pick(req, [
       'cache',
@@ -44,20 +52,11 @@ async function handler(req: Request): Promise<Response> {
     {
       event: 'request',
       request: serializableRequest,
-      requestId,
     },
-    transfers,
+    [responseChannel.port2, ...transfers],
   )
 
-  await delay(5000)
-
-  return new Response(`Hello World!`)
-}
-
-function createStreamPort(stream: ReadableStream<Uint8Array>): MessagePort {
-  const ts = new TranstreamServer()
-  ts.putStream(stream)
-  return ts.remotePort
+  return await responseDefer.promise
 }
 
 serve(handler)
