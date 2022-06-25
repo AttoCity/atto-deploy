@@ -1,9 +1,9 @@
-import type { Handler } from '../deps.ts'
+import type { Handler, ServeInit } from '../deps.ts'
 import { BridgeEvent } from './events.ts'
 import { getStreamFromEvent } from './getStreamFromEvent.ts'
 import { serializeResponse } from './serialize.ts'
 
-export function handleRequest(handler: Handler) {
+export function serve(handler: Handler, init?: ServeInit) {
   globalThis.addEventListener('message', async (ev) => {
     const e = ev as MessageEvent
     const data = e.data as BridgeEvent

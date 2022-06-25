@@ -1,5 +1,5 @@
 {
   "imports": {
-    "$handleRequest$": "./src/bridge/handleRequest.ts"
+    "$serve$": "./src/bridge/serve.ts"
   }
 }
