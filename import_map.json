@@ -6,6 +6,7 @@
     "std/": "https://deno.land/std@0.145.0/",
     "http/": "https://deno.land/std@0.145.0/http/",
     "debug": "https://deno.land/x/debug@0.2.0/mod.ts",
-    "p-defer": "./src/utils/pDefer.ts"
+    "p-defer": "./src/utils/pDefer.ts",
+    "lru_cache": "https://deno.land/x/lru_cache@6.0.0-deno.4/mod.ts"
   }
 }
