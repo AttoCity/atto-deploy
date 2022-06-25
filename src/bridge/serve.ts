@@ -19,7 +19,12 @@ export function serve(handler: Handler, init?: ServeInit) {
         body: reqBody,
       })
 
-      const response = await handler(request, data.connInfo)
+      let response: Response
+      try {
+        response = await handler(request, data.connInfo)
+      } catch (e) {
+        response = new Response(`${e as string}`, { status: 500 })
+      }
 
       const sr = serializeResponse(response)
       const payload: BridgeEvent = {
