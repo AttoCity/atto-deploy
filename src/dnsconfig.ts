@@ -1,8 +1,8 @@
 import { resolveTxt } from './deps.ts'
 
 export async function getWorkerUrl(domain: string): Promise<string | null> {
-  const baseDomain = '.dcnf.atto.town'
-  const queryDomain = `${domain}${baseDomain}`
+  const baseDomain = Deno.env.get('DEPLOY_CONFIG_DOMAIN') || '.dcnf.atto.town'
+  const queryDomain = `${domain}${baseDomain as string}`
   const result = await new Promise<string[][]>((resolve, reject) => {
     resolveTxt(queryDomain, (err, records) => {
       if (err) {

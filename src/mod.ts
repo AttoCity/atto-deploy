@@ -60,4 +60,6 @@ async function handler(req: Request, connInfo: ConnInfo): Promise<Response> {
   return response
 }
 
-serve(handler)
+serve(handler, {
+  port: parseInt(Deno.env.get('PORT') || '8000', 10),
+})
