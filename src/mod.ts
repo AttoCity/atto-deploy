@@ -22,6 +22,14 @@ function getWorker(url: string): Worker {
 
   const worker = new Worker(url, {
     type: 'module',
+    deno: {
+      permissions: {
+        env: false,
+        ffi: false,
+        read: false,
+        write: false,
+      },
+    },
   })
   workers.set(url, worker)
 
