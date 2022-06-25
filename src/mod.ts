@@ -49,9 +49,23 @@ async function handler(req: Request, connInfo: ConnInfo): Promise<Response> {
       return new Response('no worker url given', { status: 400 })
     }
 
-    if (req.method === 'PURGE' && reqUrl.pathname === '/atto-cgi/purge-worker') {
+    if (
+      req.method === 'PURGE' &&
+      reqUrl.pathname === '/atto-cgi/purge' &&
+      req.headers.get('Atto-Deploy-Purge-Token') === Deno.env.get('DEPLOY_PURGE_TOKEN')
+    ) {
       workers.del(workerUrl)
-      return new Response(null, { status: 204 })
+      const reloadProcess = Deno.run({
+        cmd: ['deno', 'cache', '--reload', workerUrl],
+        stderr: 'piped',
+        stdout: 'piped',
+        env: {
+          ...Deno.env.toObject(),
+          NO_COLOR: '1',
+        },
+      })
+      const result = await reloadProcess.stderrOutput()
+      return new Response(result, { status: (await reloadProcess.status()).success ? 200 : 500 })
     }
 
     const worker = getWorker(workerUrl)
