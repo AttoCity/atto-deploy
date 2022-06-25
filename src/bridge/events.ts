@@ -1,4 +1,4 @@
-import type { ConnInfo } from 'http/server.ts'
+import type { ConnInfo } from '../deps.ts'
 
 export type SerializableRequest = Pick<
   Request,

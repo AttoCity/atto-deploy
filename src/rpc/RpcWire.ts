@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/require-await */
-import createDefer, { DeferredPromise } from 'p-defer'
-import { debug as Debug } from 'debug'
-
-const debug = Debug('epicframe:rpc:wire')
+import createDefer, { DeferredPromise } from '../utils/pDefer.ts'
 
 export abstract class RpcWire {
   public logger = {
@@ -61,7 +58,6 @@ export abstract class RpcWire {
         result,
         error: null,
       }
-      debug('response', response)
       await this.rpcSocketSend(response)
     } catch (e) {
       this.logger.error(
@@ -111,7 +107,6 @@ export abstract class RpcWire {
       fn,
     }
 
-    debug('request', request)
     const payload = request
     await this.rpcSocketSend(payload)
 

@@ -2,7 +2,7 @@ import createDefer from '../utils/pDefer.ts'
 import { BridgeEvent } from './events.ts'
 import { getStreamFromEvent } from './getStreamFromEvent.ts'
 import { serializeRequest } from './serialize.ts'
-import type { ConnInfo } from 'http/server.ts'
+import type { ConnInfo } from '../deps.ts'
 
 export function postRequestToWorker(worker: Worker, request: Request, connInfo: ConnInfo) {
   const responseDefer = createDefer<Response>()

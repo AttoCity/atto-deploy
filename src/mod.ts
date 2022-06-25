@@ -1,7 +1,7 @@
-import { serve, ConnInfo } from 'http/server.ts'
 import { postRequestToWorker } from './bridge/postRequestToWorker.ts'
 import { getWorkerUrl } from './dnsconfig.ts'
-import LRU from 'lru_cache'
+import { LRU } from './deps.ts'
+import { serve, ConnInfo } from './deps.ts'
 
 const workers = new LRU<string, Worker>({
   max: 20,

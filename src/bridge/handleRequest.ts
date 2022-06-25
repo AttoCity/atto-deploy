@@ -1,4 +1,4 @@
-import type { Handler } from 'http/server.ts'
+import type { Handler } from '../deps.ts'
 import { BridgeEvent } from './events.ts'
 import { getStreamFromEvent } from './getStreamFromEvent.ts'
 import { serializeResponse } from './serialize.ts'

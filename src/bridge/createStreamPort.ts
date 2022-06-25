@@ -1,5 +1,4 @@
 import { TranstreamServer } from '../transtream/index.ts'
-import { SerializableRequest, BridgeEvent } from './events.ts'
 
 export function createStreamPort(stream: ReadableStream<Uint8Array>): MessagePort {
   const ts = new TranstreamServer()

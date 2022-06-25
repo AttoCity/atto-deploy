@@ -1,4 +1,4 @@
-import { resolveTxt } from 'std/node/dns.ts'
+import { resolveTxt } from './deps.ts'
 
 export async function getWorkerUrl(domain: string): Promise<string | null> {
   const baseDomain = '.dcnf.atto.town'
