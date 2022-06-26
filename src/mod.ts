@@ -28,6 +28,7 @@ function getWorker(url: string): Worker {
         ffi: false,
         read: false,
         write: false,
+        net: true,
       },
     },
   })
