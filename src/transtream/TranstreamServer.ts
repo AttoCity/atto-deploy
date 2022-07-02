@@ -1,4 +1,4 @@
-import { connectWire, reverseProtocol } from 'https://esm.sh/@orz/rpc@2.1.3'
+import { connectWire, reverseProtocol } from '../deps.ts'
 import { transtreamProtocol } from './transtreamProtocol.ts'
 import { WindowMessageRpc } from './WindowMessageRpc.ts'
 

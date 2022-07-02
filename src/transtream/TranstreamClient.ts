@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { connectWire } from 'https://esm.sh/@orz/rpc@2.1.3'
+import { connectWire } from '../deps.ts'
 import { transtreamProtocol } from './transtreamProtocol.ts'
 import { WindowMessageRpc } from './WindowMessageRpc.ts'
 
