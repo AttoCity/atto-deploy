@@ -1,4 +1,4 @@
-import { rpcMethod, rpcProtocol } from '../rpc/index.ts'
+import { rpcMethod, rpcProtocol } from 'https://esm.sh/@orz/rpc@2.1.3'
 
 export const transtreamProtocol = rpcProtocol({
   server: {

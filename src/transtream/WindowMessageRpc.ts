@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { RpcWire } from './RpcWire.ts'
+import { RpcWire } from 'https://esm.sh/@orz/rpc@2.1.3'
 
 export class WindowMessageRpc extends RpcWire {
   private target!: MessagePort

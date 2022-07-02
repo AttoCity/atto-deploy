@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { connectWire, WindowMessageRpc } from '../rpc/index.ts'
+import { connectWire } from 'https://esm.sh/@orz/rpc@2.1.3'
 import { transtreamProtocol } from './transtreamProtocol.ts'
+import { WindowMessageRpc } from './WindowMessageRpc.ts'
 
 export class TranstreamClient extends connectWire(transtreamProtocol, WindowMessageRpc) {
   private controller: ReadableByteStreamController | undefined
